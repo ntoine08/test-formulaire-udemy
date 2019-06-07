@@ -61,6 +61,14 @@ header h1
     text-align: center;
 }
 
+#error
+{
+    background-color: red;
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+
 form
 {
     text-align: left;

@@ -1,4 +1,5 @@
 <?php
+require('src/connection.php');
 // espace membre
 if(!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['password_confirm']))
 {
@@ -13,6 +14,9 @@ if(!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['passwor
     {
         header('location: ../?error=1&pass=1');
     }
+    //test si email utilisé
+    $req = $db->prepare("SELECT count(*) as numberEmail FROM users WHERE email = ?");
+    $req->execute(array($email))
 }
 //inscription
 ?>
@@ -33,7 +37,10 @@ if(!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['passwor
         <?php
             if(isset($_GET['error']))
             {
-                
+                if(isset($_GET['pass']))
+                {
+                    echo'<p id="error">Les mots de passe ne sont pas identiques.</p>';
+                }
             }
         ?>
         <div id="form">
