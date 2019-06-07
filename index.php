@@ -67,3 +67,4 @@ if(!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['passwor
     </div>
     </body>
 </html>
+
